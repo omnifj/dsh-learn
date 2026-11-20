@@ -3,3 +3,5 @@ node_modules/
 dsh-learn/
 .tmp-*
 *.log
+# Windows sandbox ACL repair backups
+acl-recovery/

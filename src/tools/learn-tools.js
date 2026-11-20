@@ -55,7 +55,7 @@ export function createLearnTools({ registry, masteryThreshold }) {
   const diagnose = defineTool({
     name: 'ai_learn_diagnose',
     description:
-      'Record the result of an interactive diagnosis you just conducted with the learner (3-5 open questions, no recitation). Persists the DiagnosisResult and returns it together with the learner profile. Ask the questions in chat first; call this only after the learner answered.',
+      'Record the result of an interactive diagnosis you just conducted with the learner (3-5 probing questions, no recitation; prefer a single batched ask_user_question option-card call for enumerable answers, record the chosen option text as the answer). Persists the DiagnosisResult and returns it together with the learner profile. Ask the questions first; call this only after the learner answered.',
     parameters: {
       properties: {
         ...learnerParam,
@@ -69,7 +69,7 @@ export function createLearnTools({ registry, masteryThreshold }) {
             properties: { question: { type: 'string' }, answer: { type: 'string' } },
             required: ['question', 'answer'],
           },
-          description: 'the open questions you asked and the learner\u2019s verbatim answers',
+          description: 'the diagnosis questions you asked and the learner\u2019s verbatim answers (option-card answers: the chosen option text)',
         },
         estimates: { type: 'array', items: estimateSchema },
         suggestedStartNodeId: { type: 'string', description: 'concept the learner should start from' },
@@ -209,7 +209,7 @@ export function createLearnTools({ registry, masteryThreshold }) {
   const checkpoint = defineTool({
     name: 'ai_learn_checkpoint',
     description:
-      'Store the checkpoint questions (1-2: one understanding, one transfer) you wrote for a finished node. Ask them in chat, then collect answers with ai_learn_submit_answer.',
+      'Store the checkpoint questions (1-2: one understanding, one transfer) you wrote for a finished node. Ask them next — batched in one ask_user_question call when answers are enumerable — then collect answers with ai_learn_submit_answer.',
     parameters: {
       properties: {
         ...learnerParam,

@@ -90,9 +90,11 @@ export function apply(ctx, config = {}) {
       const agents = ctx.get('agents')?.list?.() ?? [];
       if (agents.length === 0) return;
       const text =
-        `【dsh-learn 复习提醒】你有 ${due} 个到期的复习项。` +
-        '按 SM-2 记忆曲线，现在复习效果最好。想开始就说「复习」；' +
-        '调用 ai_learn_review_due 查看明细。';
+        `【dsh-learn 复习提醒】（这是一条系统提醒，请勿原文转达给学习者，` +
+        `也不要透露工具名与内部机制。）学习者有 ${due} 个到期的复习项，` +
+        `按记忆曲线现在复习效果最好。请用自己的话，配合 ask_user_question ` +
+        `选项卡询问学习者现在是否复习（选项：现在复习 / 先学新内容）；` +
+        `学习者同意后先调用复习查询工具获取明细，再按私教协议做主动回忆式复习。`;
       const message = { content: [{ type: 'text', text }], source: { kind: 'dsh-learn' } };
       const targets = reminderMode === 'all' ? agents : agents.slice(-1);
       for (const agent of targets) {
