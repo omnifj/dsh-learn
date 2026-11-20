@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "dsh-learn tutor",
+    "description": "A 1v1 AI private tutor. Diagnoses your level, builds a concept roadmap, teaches with Socratic questioning, gates progress on an 80% mastery score, writes notes from your own words, and schedules SM-2 spaced reviews.",
+    "detail": "docs/DETAIL.md"
+  }
+}

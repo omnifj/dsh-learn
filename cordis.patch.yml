@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-learn
+      name: '@local/dsh-learn'
+      config: {}

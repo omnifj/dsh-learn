@@ -1,0 +1,5 @@
+node_modules/
+# runtime learning data when the repo itself is the session workspace
+dsh-learn/
+.tmp-*
+*.log
