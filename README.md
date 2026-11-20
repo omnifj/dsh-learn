@@ -14,7 +14,24 @@
 
 ## 安装
 
-在 DSH 中：**Plugins → Add plugin**，选择本目录（或 `plugin_manager` 的 `install_bundle`，target 为本目录绝对路径）。
+**方式一：直接从 GitHub 安装（推荐给朋友）**
+
+在 DSH 中：**Plugins → Add plugin**，粘贴以下任一地址即可（DSH 会自动 clone 并安装）：
+
+```
+github:omnifj/dsh-learn
+# 或完整 URL：https://github.com/omnifj/dsh-learn
+```
+
+也可以让 agent 代劳：对它说"安装插件 github:omnifj/dsh-learn"。
+
+**方式二：本地目录安装（适合二次开发）**
+
+```sh
+git clone https://github.com/omnifj/dsh-learn.git
+```
+
+然后 **Plugins → Add plugin** 选择克隆下来的目录。本地目录以 link 方式挂载，改代码后禁用/启用插件即可热重载。
 
 安装后：
 
